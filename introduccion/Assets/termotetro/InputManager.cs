@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour {
 
-	public float up;
+	public Cafe cafe;
 
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		up = Input.GetAxis ("Vertical");
+		float value = Input.GetAxis ("Vertical");
+		cafe.ChangeTemperateValue(value);
 	}
 }
