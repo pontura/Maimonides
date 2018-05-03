@@ -11,7 +11,7 @@ public class ContactData {
 	public string lastName;
 	public int celPhone;
 	public string email;
-	public Image photo;
+	public Sprite photo;
 	public string birthday;
 
 }
