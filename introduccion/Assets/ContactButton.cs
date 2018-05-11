@@ -17,8 +17,9 @@ public class ContactButton : MonoBehaviour {
 	public void Init (ContactData data, Popup popup) {
 		this.data = data;
 		this.popup = popup;
-		field.text = data.lastName;
+		field.text = data.firstName + " " + data.lastName;
 		image.sprite = data.photo;
+		GetComponent<Image>().color = new Color ((float)(Random.Range(0,100))/100, (float)(Random.Range(0,100))/100,(float)(Random.Range(0,100))/100);
 	}
 
 	public void OnButtonClick () {
