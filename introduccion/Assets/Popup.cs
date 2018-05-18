@@ -15,13 +15,15 @@ public class Popup : MonoBehaviour {
 	public Text birthday;
 	public Image image;
 
+	public Animation anim;	
 
 	void Start () {
-		Close();
+		TurnOff();
 	}
 	public void Init (ContactData data)
 	{
 		gameObject.SetActive (true);
+		anim.Play ("openPopup");
 		nameField.text = data.lastName + " " +  data.firstName;
 		tel.text = data.celPhone.ToString();
 		email.text = data.email;
@@ -29,6 +31,12 @@ public class Popup : MonoBehaviour {
 		image.sprite = data.photo;
 	}
 	public void Close()
+	{
+		print ("Close");
+		anim.Play ("closePopup");
+		Invoke ("TurnOff", 0.5f);
+	}
+	public void TurnOff()
 	{
 		gameObject.SetActive (false);
 	}
