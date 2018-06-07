@@ -14,9 +14,4 @@ public class TileGame : MonoBehaviour {
 		Tile initTile = tilesManager.GetTileInCoords(originalPositionX,originalPositionZ);
 		catController.InitCatInTile(initTile);
 	}
-	public void ResetCatPosition()
-	{
-		Tile initTile = tilesManager.GetTileInCoords(0,0);
-		catController.InitCatInTile(initTile);
-	}
 }
