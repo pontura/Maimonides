@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SphereWorld : MonoBehaviour {
 
+	public Clock clock;
 	public GameObject street;
 	public int separation;
 	public PrincipitoSignal signal;
+	public Animation anim;
 
 	void Start () {
 		for (int i = 0; i < 360; i = i + separation) {
@@ -24,8 +26,16 @@ public class SphereWorld : MonoBehaviour {
 
 		}
 	}
+	public float secondInAnimation;
+
 	void Update()
 	{
-		transform.Rotate (-Vector3.right, Time.deltaTime*10);
+		anim ["timer"].time = clock.hours*10/24;
+		anim.Play ("timer");
+		float sec = clock.sec + clock.tick;
+		float _x= ((float)sec * 360) / 60;
+		print (_x);
+		transform.localEulerAngles = new Vector3 (_x, 0, 0);
+		//transform.Rotate (-Vector3.right);
 	}
 }

@@ -5,9 +5,10 @@ using UnityEngine;
 public class Clock : MonoBehaviour {
 
 	public float speed = 1;
-	float tick;
+	public float tick;
 
 	public int sec;
+	public float secFloated;
 	public int min;
 	public int hours;
 
