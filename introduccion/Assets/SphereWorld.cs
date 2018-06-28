@@ -5,37 +5,22 @@ using UnityEngine;
 public class SphereWorld : MonoBehaviour {
 
 	public Clock clock;
-	public GameObject street;
 	public int separation;
-	public PrincipitoSignal signal;
-	public Animation anim;
+	public Animation anim_hours;
+	public Animation anim_minutos;
 
 	void Start () {
-		for (int i = 0; i < 360; i = i + separation) {
-			GameObject newGameObject = Instantiate (street);
-			newGameObject.transform.SetParent (transform);
-			newGameObject.transform.localScale = Vector3.one;
-			newGameObject.transform.localEulerAngles = new Vector3 (i, 0, 0);
-		}
-		for (int i = 0; i < 360; i = i + 60) {
-			PrincipitoSignal newGameObject = Instantiate (signal);
-			newGameObject.transform.SetParent (transform);
-			newGameObject.transform.localScale = Vector3.one;
-			newGameObject.transform.localEulerAngles = new Vector3 (i, 0, 0);
-			newGameObject.DrawNumber (i/6);
-
-		}
 	}
 	public float secondInAnimation;
 
 	void Update()
 	{
-		anim ["timer"].time = clock.hours*10/24;
-		anim.Play ("timer");
-		float sec = clock.sec + clock.tick;
-		float _x= ((float)sec * 360) / 60;
-		print (_x);
-		transform.localEulerAngles = new Vector3 (_x, 0, 0);
-		//transform.Rotate (-Vector3.right);
+		float times = (((float)clock.hours * 60) + (float)clock.min) / 1440;
+		anim_hours ["timer"].time = times*10;
+		anim_hours.Play ("timer");
+
+		times =  (((float)clock.min * 60) + (float)clock.sec) / 3600;
+		anim_minutos ["timer"].time = times*10;
+		anim_minutos.Play ("timer");
 	}
 }
